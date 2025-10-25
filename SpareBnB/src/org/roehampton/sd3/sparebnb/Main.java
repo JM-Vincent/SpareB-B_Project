@@ -129,19 +129,21 @@ public class Main {
 
         if (AccommodationID == 1) {
             double TotalPrice = hotel.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, AccommodationID, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+
+            Booking booking = new Booking(1, hotel, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 2) {
             double TotalPrice = flat.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, AccommodationID, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+
+            Booking booking = new Booking(1, flat, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 3) {
             double TotalPrice = cabin.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, AccommodationID, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, cabin, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 4) {
             double TotalPrice = luxuryVilla.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, AccommodationID, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, luxuryVilla, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else {
             System.out.println("Invalid accommodation ID");

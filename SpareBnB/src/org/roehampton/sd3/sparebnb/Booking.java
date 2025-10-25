@@ -4,7 +4,8 @@ package org.roehampton.sd3.sparebnb;
 
 public class Booking {
     private int BookingID;
-    private int AccommodationID;
+    protected Accommodation accommodation;
+    private User user;
     private String CheckInDate;
     private String CheckOutDate;
     private int NumberOfNights;
@@ -15,9 +16,10 @@ public class Booking {
 
     // Constructor for setting properties for each attribute of the booking class.
 
-    public Booking(int BookingID, int AccommodationID, String CheckInDate, String CheckOutDate, int NumberOfNights, int NumberOfGuests, double TotalPrice) {
+    public Booking(int BookingID, Accommodation accommodation, User user, String CheckInDate, String CheckOutDate, int NumberOfNights, int NumberOfGuests, double TotalPrice) {
         this.BookingID = BookingID;
-        this.AccommodationID = AccommodationID;
+        this.accommodation = accommodation;
+        this.user = user;
         this.CheckInDate = CheckInDate;
         this.CheckOutDate = CheckOutDate;
         this.NumberOfNights = NumberOfNights;
@@ -27,9 +29,13 @@ public class Booking {
 
 
 
+
+
+
     public void showBookingInfo() {
         System.out.println("Booking ID: " + BookingID);
-        System.out.println("Accommodation ID: " + AccommodationID);
+        System.out.println("User ID: " + user.getUserID());
+        System.out.println("Accommodation ID: " + accommodation.getAccommodationID());
         System.out.println("Check-in Date: " + CheckInDate);
         System.out.println("Check-out Date: " + CheckOutDate);
         System.out.println("Number of Nights: " + NumberOfNights);

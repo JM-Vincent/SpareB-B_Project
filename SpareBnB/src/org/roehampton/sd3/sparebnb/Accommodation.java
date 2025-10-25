@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Accommodation {
-    private int AccommodationID;
-    private String AccommodationType;
-    private double PricePerNight;
-    private String Address;
+    protected int AccommodationID;
+    protected String AccommodationType;
+    protected double PricePerNight;
+    protected String Address;
 
     // --------------------------------------------------------------------------
     // The code below is used to create a list of bookings and facilities.
@@ -63,6 +63,10 @@ public abstract class Accommodation {
         System.out.println("Accommodation Type: " + AccommodationType);
         System.out.println("Price per night: " + PricePerNight);
         System.out.println("Address: " + Address);
+    }
+
+    public int getAccommodationID() {
+        return AccommodationID;
     }
 
 
