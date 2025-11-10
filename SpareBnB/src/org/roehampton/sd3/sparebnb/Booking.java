@@ -5,7 +5,7 @@ package org.roehampton.sd3.sparebnb;
 public class Booking {
     private int BookingID;
     protected Accommodation accommodation;
-    private User user;
+    protected User user;
     private String CheckInDate;
     private String CheckOutDate;
     private int NumberOfNights;
@@ -41,6 +41,18 @@ public class Booking {
         System.out.println("Number of Nights: " + NumberOfNights);
         System.out.println("Number of Guests: " + NumberOfGuests);
         System.out.println("Price Payed: " + TotalPrice);
+    }
+
+    public int getBookingID() {
+        return BookingID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
     }
 
 

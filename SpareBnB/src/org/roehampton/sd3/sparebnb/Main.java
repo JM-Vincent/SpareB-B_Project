@@ -3,20 +3,49 @@ import java.util.Scanner; // This Java module allow users to input data.
 
 public class Main {
     public static void main(String[] args) {
-        // The scanner is used to get user input. ---------------------------------------------
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to SpareBnB.");
-        System.out.println("Please enter your name: ");
-        String name = scan.nextLine();
-        System.out.println("Please enter your email: ");
-        String email = scan.nextLine();
-        System.out.println("Please enter your password: ");
-        String password = scan.nextLine();
-        User user = new User(1, name, email, password);
-        user.getUserInfo();
+        // The scanner is used to get user input. ---------------------------------------------
+        User user1 = new User(1, "Alice Smith", "alice@example.com", "pass123");
+        User user2 = new User(2, "Bob Johnson", "bob@example.com", "pass456");
+        User user3 = new User(3, "Charlie Brown", "charlie@example.com", "pass789");
 
-        System.out.println("Here is the accommodation information.");
+        System.out.println("--- Users Created ---");
+        user1.getUserInfo();
+        user2.getUserInfo();
+        user3.getUserInfo();
+        System.out.println("\n--------------------------------------\n");
 
+        // Display available users and get user selection
+        System.out.println("\n--- Select a User for the Booking ---");
+        user1.getUserInfo();
+        user2.getUserInfo();
+        user3.getUserInfo();
+        
+        User selectedUser = null;
+        while (selectedUser == null) {
+            System.out.print("\nEnter the User ID for the booking: ");
+            int userId = scan.nextInt();
+            scan.nextLine(); // consume newline
+            
+            switch(userId) {
+                case 1:
+                    selectedUser = user1;
+                    break;
+                case 2:
+                    selectedUser = user2;
+                    break;
+                case 3:
+                    selectedUser = user3;
+                    break;
+                default:
+                    System.out.println("Invalid User ID. Please try again.");
+            }
+        }
+        
+        System.out.println("\n--- Selected User ---");
+        selectedUser.getUserInfo();
+
+        System.out.println("\nHere is the accommodation information.");
         System.out.println("\n");
 
         // -----------------------------------------------------------------------------------------------------------
@@ -106,17 +135,17 @@ public class Main {
         System.out.println("Enter the accommodation ID you would like to book: ");
         int AccommodationID = scan.nextInt();
         scan.nextLine(); // Consume newline, which allows the next string input to work.
-        
+
         System.out.println("Enter the date you like to check in: ");
         String CheckInDate = scan.nextLine();
-        
+
         System.out.println("Enter the date you like to check out: ");
         String CheckOutDate = scan.nextLine();
-        
+
         System.out.println("Enter the number of guests: ");
         int NumberOfGuests = scan.nextInt();
         scan.nextLine(); // Consume newline
-        
+
         System.out.println("Enter the number of nights: ");
         int NumberOfNights = scan.nextInt();
         scan.nextLine(); // Consume newline
@@ -130,31 +159,24 @@ public class Main {
         if (AccommodationID == 1) {
             double TotalPrice = hotel.calculateTotalPrice(NumberOfNights);
 
-            Booking booking = new Booking(1, hotel, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, hotel, selectedUser, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 2) {
             double TotalPrice = flat.calculateTotalPrice(NumberOfNights);
 
-            Booking booking = new Booking(1, flat, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, flat, selectedUser, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 3) {
             double TotalPrice = cabin.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, cabin, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, cabin, selectedUser, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else if (AccommodationID == 4) {
             double TotalPrice = luxuryVilla.calculateTotalPrice(NumberOfNights);
-            Booking booking = new Booking(1, luxuryVilla, user, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+            Booking booking = new Booking(1, luxuryVilla, selectedUser, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
             booking.showBookingInfo();
         } else {
             System.out.println("Invalid accommodation ID");
         }
-
-
-
-
-
-
-
 
 
     }

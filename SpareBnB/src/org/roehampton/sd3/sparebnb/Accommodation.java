@@ -15,12 +15,15 @@ public abstract class Accommodation {
 
     private List<Facility> facilities;
 
+    private boolean isBooked;
+
     public Accommodation(int AccommodationID, String AccommodationType, double PricePerNight, String Address) {
         this.AccommodationID = AccommodationID;
         this.AccommodationType = AccommodationType;
         this.PricePerNight = PricePerNight;
         this.Address = Address;
         this.facilities = new ArrayList<>();
+        this.isBooked = false;
     }
 
     // ------------------------------------------------------------------------------
@@ -54,6 +57,18 @@ public abstract class Accommodation {
 
     public interface CabinFeatures {
         String showCabinInfo();
+    }
+
+    public boolean getIsBooked() {
+        return this.isBooked;
+    }
+
+    public void bookAccommodation() {
+        this.isBooked = true;
+    }
+
+    public void cancelBooking() {
+        this.isBooked = false;
     }
     // --------------------------------------------------------------------------
 
