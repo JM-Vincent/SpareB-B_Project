@@ -15,12 +15,15 @@ public abstract class Accommodation {
 
     private List<Facility> facilities;
 
+    private boolean isBooked;
+
     public Accommodation(int AccommodationID, String AccommodationType, double PricePerNight, String Address) {
         this.AccommodationID = AccommodationID;
         this.AccommodationType = AccommodationType;
         this.PricePerNight = PricePerNight;
         this.Address = Address;
         this.facilities = new ArrayList<>();
+        this.isBooked = false;
     }
 
     // ------------------------------------------------------------------------------
@@ -39,21 +42,18 @@ public abstract class Accommodation {
 
     // The code below is the link between the super class and the subclasses.
 
-    public interface HotelFeatures {
-        String showHotelInfo();
+
+
+    public boolean getIsBooked() {
+        return this.isBooked;
     }
 
-    public interface LuxuryVillaFeatures {
-        String showLuxuryVillaInfo();
+    public void bookAccommodation() {
+        this.isBooked = true;
     }
 
-
-    public interface FlatFeatures {
-        String showFlatInfo();
-    }
-
-    public interface CabinFeatures {
-        String showCabinInfo();
+    public void cancelBooking() {
+        this.isBooked = false;
     }
     // --------------------------------------------------------------------------
 
@@ -64,6 +64,8 @@ public abstract class Accommodation {
         System.out.println("Price per night: " + PricePerNight);
         System.out.println("Address: " + Address);
     }
+
+    public abstract String showSpecificInfo();
 
     public int getAccommodationID() {
         return AccommodationID;

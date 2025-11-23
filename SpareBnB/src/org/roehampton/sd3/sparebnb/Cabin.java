@@ -1,6 +1,6 @@
 package org.roehampton.sd3.sparebnb;
 // The Cabin class extends the Accommodation class and implements the CabinFeatures interface.
-public class Cabin extends Accommodation implements Accommodation.CabinFeatures {
+public class Cabin extends Accommodation {
     private String settingType;
     private boolean isSecluded;
     private double lotSize;
@@ -20,7 +20,7 @@ public class Cabin extends Accommodation implements Accommodation.CabinFeatures 
 
     // The method below is used to display the cabin information.
     @Override
-    public String showCabinInfo() {
+    public String showSpecificInfo() {
         return "Setting type: " + settingType +
                 "\n" + "Is secluded: " + isSecluded +
                 "\n" + "Lot size: " + lotSize +

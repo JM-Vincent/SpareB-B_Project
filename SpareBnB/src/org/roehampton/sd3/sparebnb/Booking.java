@@ -43,6 +43,18 @@ public class Booking {
         System.out.println("Price Payed: " + TotalPrice);
     }
 
+    public int getBookingID() {
+        return BookingID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
+
 
 
 }

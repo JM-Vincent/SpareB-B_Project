@@ -1,7 +1,7 @@
 package org.roehampton.sd3.sparebnb;
 
 // The Flat class extends the Accommodation class and implements the FlatFeatures interface.
-public class Flat extends Accommodation implements Accommodation.FlatFeatures {
+public class Flat extends Accommodation {
     private int numberOfBedrooms;
     private int numberOfBathrooms;
     private int floorNumber;
@@ -22,7 +22,7 @@ public class Flat extends Accommodation implements Accommodation.FlatFeatures {
 
     // The method below is used to display the flat information.
     @Override
-    public String showFlatInfo() {
+    public String showSpecificInfo() {
         return "Number of bedrooms: " + numberOfBedrooms + "\n" +
                 ", numberOfBathrooms: " + numberOfBathrooms + "\n" +
                 ", floorNumber=" + floorNumber + "\n" +
