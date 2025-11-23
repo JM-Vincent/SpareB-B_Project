@@ -1,6 +1,6 @@
 package org.roehampton.sd3.sparebnb;
 // The Hotel class extends the Accommodation class and implements the HotelFeatures interface.
-public class Hotel extends Accommodation implements Accommodation.HotelFeatures {
+public class Hotel extends Accommodation {
     private int StarRating;
     private String RoomType;
     private boolean isFoodIncluded;
@@ -17,9 +17,25 @@ public class Hotel extends Accommodation implements Accommodation.HotelFeatures 
     // The method below is used to display the hotel information.
 
     @Override
-    public String showHotelInfo() {
+    public String showSpecificInfo() {
         return "HotelStarRating: " + StarRating + "\n" + "RoomType: " + RoomType + "\n" +
                 "isFoodIncluded: " + isFoodIncluded + "\n" + "chainName: " + chainName;
 
+    }
+
+    public int getStarRating() {
+        return StarRating;
+    }
+
+    public String getRoomType() {
+        return RoomType;
+    }
+
+    public boolean getIsFoodIncluded() {
+        return isFoodIncluded;
+    }
+
+    public String getChainName() {
+        return chainName;
     }
 }
