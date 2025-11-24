@@ -20,6 +20,18 @@ public class Facility {
                 "Appliance Name: " + applianceName;
     }
 
+    public int getFacilityID() {
+        return facilityID;
+    }
+
+    public String getFacilityName() {
+        return facilityName;
+    }
+
+    public String getApplianceName() {
+        return applianceName;
+    }
+
 
 
 }

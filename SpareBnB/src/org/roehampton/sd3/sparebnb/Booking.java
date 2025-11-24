@@ -14,7 +14,7 @@ public class Booking {
 
 
 
-    // Constructor for setting properties for each attribute of the booking class.
+    // The constructor are for setting properties for each attribute of the booking class.
 
     public Booking(int BookingID, Accommodation accommodation, User user, String CheckInDate, String CheckOutDate, int NumberOfNights, int NumberOfGuests, double TotalPrice) {
         this.BookingID = BookingID;
@@ -41,6 +41,18 @@ public class Booking {
         System.out.println("Number of Nights: " + NumberOfNights);
         System.out.println("Number of Guests: " + NumberOfGuests);
         System.out.println("Price Payed: " + TotalPrice);
+    }
+
+    public int getBookingID() {
+        return BookingID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
     }
 
 
