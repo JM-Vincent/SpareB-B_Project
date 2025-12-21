@@ -9,8 +9,8 @@ public class Cabin extends Accommodation {
 
     // Constructor for setting properties for each attribute of the cabin class.
 
-    public Cabin(int AccommodationID, String AccommodationType, double PricePerNight, String Address, String settingType, boolean isSecluded, double lotSize, String proximityToTrail, String viewType) {
-        super(AccommodationID, AccommodationType, PricePerNight, Address);
+    public Cabin(int accommodationID, String accommodationType, double pricePerNight, String address, String settingType, boolean isSecluded, double lotSize, String proximityToTrail, String viewType) {
+        super(accommodationID, accommodationType, pricePerNight, address);
         this.settingType = settingType;
         this.isSecluded = isSecluded;
         this.lotSize = lotSize;
@@ -28,23 +28,23 @@ public class Cabin extends Accommodation {
                 "\n" + "View type: " + viewType;
     }
 
-    public String getSettingType() {
+    public String getsettingType() {
         return settingType;
     }
 
-    public boolean getIsSecluded() {
+    public boolean getisSecluded() {
         return isSecluded;
     }
 
-    public double getLotSize() {
+    public double getlotSize() {
         return lotSize;
     }
 
-    public String getProximityToTrail() {
+    public String getproximityToTrail() {
         return proximityToTrail;
     }
 
-    public String getViewType() {
+    public String getviewType() {
         return viewType;
     }
 

@@ -55,10 +55,10 @@ public class Main {
         // -----------------------------------------------------------------------------------------------------------
         // Here the code creates the accommodation objects from the NewAccommodation class.
         // -----------------------------------------------------------------------------------------------------------
-        Accommodation hotel = NewAccommodation.CreateAccommodation("Hotel");
-        Accommodation flat = NewAccommodation.CreateAccommodation("Flat");
-        Accommodation cabin = NewAccommodation.CreateAccommodation("Cabin");
-        Accommodation luxuryVilla = NewAccommodation.CreateAccommodation("LuxuryVilla");
+        Accommodation hotel = NewAccommodation.createAccommodation("Hotel");
+        Accommodation flat = NewAccommodation.createAccommodation("Flat");
+        Accommodation cabin = NewAccommodation.createAccommodation("Cabin");
+        Accommodation luxuryVilla = NewAccommodation.createAccommodation("LuxuryVilla");
 
         // Creates a new HashMap that links integer key to accommodation value.
         // This code replaces the big if-else block that is at the end.
@@ -76,9 +76,9 @@ public class Main {
         hotel.showAccommodationInfo();
         System.out.println(hotel.showSpecificInfo()); // Cast to call specific method
         System.out.println("\n-------------Hotel Facilities-------------");
-        hotel.addFacility(new Facility(1, "Living Room", "TV"));
-        hotel.addFacility(new Facility(2, "Wifi", "Internet"));
-        hotel.addFacility(new Facility(3, "Gym", "Gym equipment"));
+        hotel.addFacility(NewFacility.createFacility("LivingRoom")); // Uses NewFactory here.
+        hotel.addFacility(NewFacility.createFacility("Wifi"));
+        hotel.addFacility(NewFacility.createFacility("Gym"));
         Facility facility = hotel.getFacilities().getFirst();
         System.out.println(facility.viewFacilityInfo());
         System.out.println("\n");
@@ -87,8 +87,8 @@ public class Main {
         flat.showAccommodationInfo();
         System.out.println(flat.showSpecificInfo()); // Cast
         System.out.println("\n-------------Flat Facilities-------------");
-        flat.addFacility(new Facility(1, "Living Room", "TV"));
-        flat.addFacility(new Facility(2, "Bedroom", "Air condition"));
+        flat.addFacility(NewFacility.createFacility("LivingRoom"));
+        flat.addFacility(NewFacility.createFacility("Bedroom"));
         Facility facility2 = flat.getFacilities().getFirst();
         System.out.println(facility2.viewFacilityInfo());
         System.out.println("\n");
@@ -97,8 +97,8 @@ public class Main {
         cabin.showAccommodationInfo();
         System.out.println(cabin.showSpecificInfo());
         System.out.println("\n-------------Cabin Facilities-------------");
-        cabin.addFacility(new Facility(1, "Living Room", "TV"));
-        cabin.addFacility(new Facility(2, "Bedroom", "Air condition"));
+        cabin.addFacility(NewFacility.createFacility("LivingRoom"));
+        cabin.addFacility(NewFacility.createFacility("Bedroom"));
         Facility facility3 = cabin.getFacilities().getFirst();
         System.out.println(facility3.viewFacilityInfo());
         System.out.println("\n");
@@ -107,8 +107,8 @@ public class Main {
         luxuryVilla.showAccommodationInfo();
         System.out.println(luxuryVilla.showSpecificInfo()); // Cast
         System.out.println("\n-------------Luxury Villa Facilities-------------");
-        luxuryVilla.addFacility(new Facility(1, "Living Room", "TV"));
-        luxuryVilla.addFacility(new Facility(2, "Bedroom", "Air condition"));
+        luxuryVilla.addFacility(NewFacility.createFacility("LivingRoom"));
+        luxuryVilla.addFacility(NewFacility.createFacility("Bedroom"));
         Facility facility4 = luxuryVilla.getFacilities().getFirst();
         System.out.println(facility4.viewFacilityInfo());
         System.out.println("\n-----------------------------------------------");
@@ -135,14 +135,14 @@ public class Main {
             }
             // Asks for details of the booking.
             System.out.println("Enter the date you like to check in: ");
-            String CheckInDate = scan.nextLine();
+            String checkInDate = scan.nextLine();
             System.out.println("Enter the date you like to check out: ");
-            String CheckOutDate = scan.nextLine();
+            String checkOutDate = scan.nextLine();
             System.out.println("Enter the number of guests: ");
-            int NumberOfGuests = scan.nextInt();
+            int numberOfGuests = scan.nextInt();
             scan.nextLine();
             System.out.println("Enter the number of nights: ");
-            int NumberOfNights = scan.nextInt();
+            int numberOfNights = scan.nextInt();
             scan.nextLine();
 
             // If statement for checking any conflict.
@@ -151,10 +151,10 @@ public class Main {
                 // Check if the accommodation is available.
                 if (!selectedAcc.getIsBooked()) {
                     System.out.println("Great! The accommodation is available.");
-                    selectedAcc.bookAccommodation(); // Here its marked as booked.
+                    selectedAcc.bookAccommodation(); // Here it's marked as booked.
 
-                    double TotalPrice = selectedAcc.calculateTotalPrice(NumberOfNights);// Calculates the total prices.
-                    Booking booking = new Booking(1, selectedAcc, selectedUser, CheckInDate, CheckOutDate, NumberOfNights, NumberOfGuests, TotalPrice);
+                    double totalPrice = selectedAcc.calculateTotalPrice(numberOfNights);// Calculates the total prices.
+                    Booking booking = new Booking(1, selectedAcc, selectedUser, checkInDate, checkOutDate, numberOfNights, numberOfGuests, totalPrice);
                     // Records the booking details ^.
                     System.out.println("\n--- Booking Successful! ---");
                     booking.showBookingInfo();
@@ -169,7 +169,7 @@ public class Main {
 
 
         // -------------------------------------------------------------------------------------
-        // The code below is for the handling booking and any confliction.
+        // The code above is for the handling booking and any confliction.
         // -------------------------------------------------------------------------------------
 
 

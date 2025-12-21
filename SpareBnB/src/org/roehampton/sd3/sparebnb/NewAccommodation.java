@@ -2,7 +2,7 @@ package org.roehampton.sd3.sparebnb;
 
 public class NewAccommodation {
 
-    public static Accommodation CreateAccommodation(String type) {
+    public static Accommodation createAccommodation(String type) {
         if (type.equalsIgnoreCase("Hotel")) { // if statements for adding data to each accommodation.
             return new Hotel(1, "Hotel", 100.00, "123 Main St", 5, "Single", true, "Hotel Chain");
         } else if (type.equalsIgnoreCase("Flat")) {

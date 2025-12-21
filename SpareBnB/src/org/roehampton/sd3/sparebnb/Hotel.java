@@ -1,15 +1,15 @@
 package org.roehampton.sd3.sparebnb;
 // The Hotel class extends the Accommodation class and implements the HotelFeatures interface.
 public class Hotel extends Accommodation {
-    private int StarRating;
-    private String RoomType;
+    private int starRating;
+    private String roomType;
     private boolean isFoodIncluded;
     private String chainName;
 
-    public Hotel(int AccommodationID, String AccommodationType, double PricePerNight, String Address, int StarRating, String RoomType, boolean isFoodIncluded, String chainName) {
-        super(AccommodationID, AccommodationType, PricePerNight, Address);
-        this.StarRating = StarRating;
-        this.RoomType = RoomType;
+    public Hotel(int accommodationID, String accommodationType, double pricePerNight, String address, int starRating, String roomType, boolean isFoodIncluded, String chainName) {
+        super(accommodationID, accommodationType, pricePerNight, address);
+        this.starRating = starRating;
+        this.roomType = roomType;
         this.isFoodIncluded = isFoodIncluded;
         this.chainName = chainName;
     }
@@ -18,24 +18,24 @@ public class Hotel extends Accommodation {
 
     @Override
     public String showSpecificInfo() {
-        return "HotelStarRating: " + StarRating + "\n" + "RoomType: " + RoomType + "\n" +
+        return "HotelStarRating: " + starRating + "\n" + "RoomType: " + roomType + "\n" +
                 "isFoodIncluded: " + isFoodIncluded + "\n" + "chainName: " + chainName;
 
     }
 
-    public int getStarRating() {
-        return StarRating;
+    public int getstarRating() {
+        return starRating;
     }
 
-    public String getRoomType() {
-        return RoomType;
+    public String getroomType() {
+        return roomType;
     }
 
-    public boolean getIsFoodIncluded() {
+    public boolean getisFoodIncluded() {
         return isFoodIncluded;
     }
 
-    public String getChainName() {
+    public String getchainName() {
         return chainName;
     }
 }

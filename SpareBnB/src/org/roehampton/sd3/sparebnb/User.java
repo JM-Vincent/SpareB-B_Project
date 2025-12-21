@@ -31,15 +31,15 @@ public class User {
         return userID;
     }
 
-    public String getName() {
+    public String getname() {
         return name;
     }
 
-    public String getEmail() {
+    public String getemail() {
         return email;
     }
 
-    public String getPassword() {
+    public String getpassword() {
         return password;
     }
 

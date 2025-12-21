@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Accommodation {
-    protected int AccommodationID;
-    protected String AccommodationType;
-    protected double PricePerNight;
-    protected String Address;
+    protected int accommodationID;
+    protected String accommodationType;
+    protected double pricePerNight;
+    protected String address;
 
     // --------------------------------------------------------------------------
     // The code below is used to create a list of bookings and facilities.
@@ -17,11 +17,11 @@ public abstract class Accommodation {
 
     private boolean isBooked;
 
-    public Accommodation(int AccommodationID, String AccommodationType, double PricePerNight, String Address) {
-        this.AccommodationID = AccommodationID;
-        this.AccommodationType = AccommodationType;
-        this.PricePerNight = PricePerNight;
-        this.Address = Address;
+    public Accommodation(int accommodationID, String accommodationType, double pricePerNight, String address) {
+        this.accommodationID = accommodationID;
+        this.accommodationType = accommodationType;
+        this.pricePerNight = pricePerNight;
+        this.address = address;
         this.facilities = new ArrayList<>();
         this.isBooked = false;
     }
@@ -59,16 +59,16 @@ public abstract class Accommodation {
 
     // This is a method that displays the accommodation information.
     public void showAccommodationInfo() {
-        System.out.println("Accommodation ID: " + AccommodationID);
-        System.out.println("Accommodation Type: " + AccommodationType);
-        System.out.println("Price per night: " + PricePerNight);
-        System.out.println("Address: " + Address);
+        System.out.println("Accommodation ID: " + accommodationID);
+        System.out.println("Accommodation Type: " + accommodationType);
+        System.out.println("Price per night: " + pricePerNight);
+        System.out.println("Address: " + address);
     }
 
     public abstract String showSpecificInfo();
 
     public int getAccommodationID() {
-        return AccommodationID;
+        return accommodationID;
     }
 
 
@@ -79,7 +79,7 @@ public abstract class Accommodation {
      * @return the total price for the specified number of nights
      */
     public double calculateTotalPrice(int numberOfNights) {
-        return PricePerNight * numberOfNights;
+        return pricePerNight * numberOfNights;
     }
 
 
