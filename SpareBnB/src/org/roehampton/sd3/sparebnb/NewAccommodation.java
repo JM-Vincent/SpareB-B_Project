@@ -9,7 +9,10 @@ public class NewAccommodation {
             return new Flat(2, "Flat", 30.00, "456 Elm St", 2, 2, 5, true, true);
         } else if (type.equalsIgnoreCase("Cabin")) {
             return new Cabin(3, "Cabin", 250.00, "789 Oak St", "Mountain", true, 100.0, "Close to trail", "Mountain View");
-        } else if (type.equalsIgnoreCase("LuxuryVilla")) {
+        } 
+        // Check if the requested type is "LuxuryVilla" (case-insensitive)
+        else if (type.equalsIgnoreCase("LuxuryVilla")) {
+            // Create and return a new LuxuryVilla instance with default values
             return new LuxuryVilla(4, "Luxury Villa", 400.0, "101 Pine St", 5, true, true, 3);
         } else {
             return null;

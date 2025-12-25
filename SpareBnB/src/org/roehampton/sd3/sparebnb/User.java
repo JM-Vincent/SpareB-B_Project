@@ -43,5 +43,10 @@ public class User {
         return password;
     }
 
+    @Override
+    public String toString() {
+        return this.name; // This tells the GUI to display the user's name
+    }
+
 
 }

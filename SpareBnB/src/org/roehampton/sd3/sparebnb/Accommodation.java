@@ -63,6 +63,18 @@ public abstract class Accommodation {
         System.out.println("Accommodation Type: " + accommodationType);
         System.out.println("Price per night: " + pricePerNight);
         System.out.println("Address: " + address);
+
+    }
+    public String showAccommodationInfoText() {
+        return "Accommodation ID: " + accommodationID + "\n" +
+                "Accommodation Type: " + accommodationType + "\n" +
+                "Price per night: £" + pricePerNight + "\n" +
+                "Address: " + address;
+    }
+
+    @Override
+    public String toString() {
+        return this.accommodationType; // This tells the GUI to display "Hotel", "Cabin", etc.
     }
 
     public abstract String showSpecificInfo();
