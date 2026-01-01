@@ -46,6 +46,9 @@
         <Label text="Number of Nights:" />
         <TextField fx:id="nightsField" prefWidth="60.0" text="1" />
 
+        <Label text="Number of Guests:" />
+        <TextField fx:id="guestsField" prefWidth="60.0" text="1" />
+
         <!-- Spacer to push the button to the right -->
         <Region HBox.hgrow="ALWAYS" />
 

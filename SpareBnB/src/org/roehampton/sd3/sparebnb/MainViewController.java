@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Controller class for the Main View of the SpareBnB application.
  * This class handles user interactions, initializes data, and updates the UI components.
@@ -18,6 +19,7 @@ public class MainViewController {
     @FXML private ListView<Accommodation> accommodationListView; // List view to display accommodations
     @FXML private TextArea detailsTextArea; // Text area to show details and messages
     @FXML private TextField nightsField; // Input field for number of nights
+    @FXML private TextField guestsField; // New input field for number of guests
 
     // Map to store accommodations using their ID as the key for easy lookup
     private Map<Integer, Accommodation> accommodationsMap = new HashMap<>();
@@ -78,21 +80,20 @@ public class MainViewController {
                 // 1. Add General Info about the accommodation
                 fullInfo.append(newVal.showAccommodationInfoText()).append("\n\n");
 
-                // 2. Add Specific Info like Star rating, Square footage, etc.
-                fullInfo.append("--- Specific Details ---\n");
-                fullInfo.append(newVal.showSpecificInfo()).append("\n\n");
-
                 // 3. Add the facilities information
                 fullInfo.append("--- Included Facilities ---\n");
-                if (newVal.getFacilities().isEmpty()) {
+
+                // Use Java Streams to process the facilities list
+                String facilitiesInfo = newVal.getFacilities().stream()
+                        .map(f -> f.viewFacilityInfo() + "\n--------------------------")
+                        .collect(java.util.stream.Collectors.joining("\n"));
+
+                if (facilitiesInfo.isEmpty()) {
                     fullInfo.append("No facilities listed for this accommodation.");
                 } else {
-                    // Iterate through facilities and append their info
-                    for (Facility f : newVal.getFacilities()) {
-                        fullInfo.append(f.viewFacilityInfo()).append("\n");
-                        fullInfo.append("--------------------------\n");
-                    }
+                    fullInfo.append(facilitiesInfo);
                 }
+
 
                 // Update the detailsTextArea with the constructed information string
                 detailsTextArea.setText(fullInfo.toString());
@@ -135,6 +136,7 @@ public class MainViewController {
         try {
             // Parse the number of nights from the input field
             int nights = Integer.parseInt(nightsField.getText());
+            int guests = Integer.parseInt(guestsField.getText());
             
             // Calculate the total price based on the number of nights
             double total = selectedAcc.calculateTotalPrice(nights);
@@ -145,10 +147,13 @@ public class MainViewController {
             // Display a success message with the user's name and total price
             detailsTextArea.setText("Booking Successful!\n" +
                     "User: " + selectedUser.getname() + "\n" +
+                    "Guests: " + guests + "\n" + // NEW
+                    "Nights: " + nights + "\n" +
                     "Total Price: £" + total);
+
         } catch (NumberFormatException e) {
             // Handle the case where the nights input is not a valid integer
-            detailsTextArea.setText("Error: Please enter a valid number of nights.");
+            detailsTextArea.setText("Error: Please enter a valid number for nights and guests.");
         }
     }
 }
