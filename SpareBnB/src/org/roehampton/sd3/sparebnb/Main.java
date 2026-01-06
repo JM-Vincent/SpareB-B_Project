@@ -153,7 +153,7 @@ public class Main {
                     System.out.println("Great! The accommodation is available.");
                     selectedAcc.bookAccommodation(); // Here it's marked as booked.
 
-                    double totalPrice = selectedAcc.calculateTotalPrice(numberOfNights);// Calculates the total prices.
+                    double totalPrice = selectedAcc.calculateTotalPrice(numberOfNights, numberOfGuests);// Calculates the total prices.
                     Booking booking = new Booking(1, selectedAcc, selectedUser, checkInDate, checkOutDate, numberOfNights, numberOfGuests, totalPrice);
                     // Records the booking details ^.
                     System.out.println("\n--- Booking Successful! ---");

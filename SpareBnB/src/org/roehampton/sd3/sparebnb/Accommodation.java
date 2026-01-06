@@ -86,12 +86,15 @@ public abstract class Accommodation {
 
     
     /**
-     * Calculates the total price for a given number of nights
+     * Calculates the total price for a given number of nights.
      * @param numberOfNights the number of nights to calculate for total price.
-     * @return the total price for the specified number of nights
+     * @return the total price for the specified number of nights.
      */
-    public double calculateTotalPrice(int numberOfNights) {
-        return pricePerNight * numberOfNights;
+    public double calculateTotalPrice(int numberOfNights, int numberOfGuests) {
+        // Example: Base price for the room + £20 per additional guest
+        double basePrice = pricePerNight * numberOfNights;
+        double guestSurcharge = (numberOfGuests > 1) ? (numberOfGuests - 1) * 20.0 * numberOfNights : 0;
+        return basePrice + guestSurcharge;
     }
 
 

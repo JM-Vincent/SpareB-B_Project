@@ -4,7 +4,7 @@ public class NewFacility {
 
 
     public static Facility createFacility(String type) {
-        if (type.equalsIgnoreCase("LivingRoom")) {
+        if (type.equalsIgnoreCase("LivingRoom")) { // if statements for adding facility data to each accommodation.
             return new Facility(1, "Living Room", "TV");
         } else if (type.equalsIgnoreCase("Wifi")) {
             return new Facility(2, "Wifi", "Internet");

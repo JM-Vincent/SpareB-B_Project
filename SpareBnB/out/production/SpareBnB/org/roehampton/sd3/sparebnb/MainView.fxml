@@ -6,6 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
+
+
 <!-- Root VBox container for the main view -->
 <VBox spacing="15.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.roehampton.sd3.sparebnb.MainViewController">
     <!-- Padding around the edges of the VBox -->
@@ -43,6 +45,10 @@
 
     <!-- HBox for booking controls (nights input and confirm button) -->
     <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #f4f4f4; -fx-padding: 10; -fx-border-color: #ddd;">
+
+        <Label text="Check-in Date:"/>
+        <DatePicker fx:id="checkInPicker" prefWidth="120.0"/>
+
         <Label text="Number of Nights:" />
         <TextField fx:id="nightsField" prefWidth="60.0" text="1" />
 

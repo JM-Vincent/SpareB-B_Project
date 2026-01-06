@@ -18,15 +18,15 @@ public class SpareBnBApp extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        // This line tells JavaFX to look for your layout file (MainView.fxml)
+        // Here this line tells JavaFX to look for your layout file aka the MainView.fxml file.
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
 
-        // Create the window content (Scene) with a size of 800x600 pixels
+        // This creates the window content, which is the Scene with a size of 800x600 pixels.
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 
         stage.setTitle("SpareBnB Management System");
         stage.setScene(scene);
-        stage.show(); // This actually opens the window
+        stage.show(); // This opens the window of the application.
     }
 
     /**
@@ -35,6 +35,6 @@ public class SpareBnBApp extends Application {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        launch(); // This launches the JavaFX lifecycle
+        launch(); // This launches the JavaFX lifecycle.
     }
 }

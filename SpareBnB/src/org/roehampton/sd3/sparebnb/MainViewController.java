@@ -4,8 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 /**
@@ -15,13 +17,16 @@ import java.util.Map;
 public class MainViewController {
 
     // UI components injected from the FXML file
-    @FXML private ListView<User> userListView; // List view to display users
+    @FXML private ListView<User> userListView; // List for viewing to display users.
     @FXML private ListView<Accommodation> accommodationListView; // List view to display accommodations
-    @FXML private TextArea detailsTextArea; // Text area to show details and messages
-    @FXML private TextField nightsField; // Input field for number of nights
-    @FXML private TextField guestsField; // New input field for number of guests
+    @FXML private TextArea detailsTextArea; // Text area is used to show details and messages.
+    @FXML private TextField nightsField; // The input field is used for number of nights.
+    @FXML private TextField guestsField; // The input field is for getting n.o. guests.
+    @FXML private DatePicker checkInPicker; // Show date options.
 
-    // Map to store accommodations using their ID as the key for easy lookup
+
+
+    // The map is used to store accommodations using their ID as the key for easy lookup.
     private Map<Integer, Accommodation> accommodationsMap = new HashMap<>();
 
     /**
@@ -51,20 +56,20 @@ public class MainViewController {
         accommodationsMap.put(cabin.getAccommodationID(), cabin);
         accommodationsMap.put(luxuryVilla.getAccommodationID(), luxuryVilla);
 
-        // Add facilities to the Hotel accommodation
+        // This adds facilities to the Hotel accommodation.
         hotel.addFacility(NewFacility.createFacility("LivingRoom"));
         hotel.addFacility(NewFacility.createFacility("Wifi"));
         hotel.addFacility(NewFacility.createFacility("Gym"));
 
-        // Add facilities to the Flat accommodation
+        // This adds facilities to the Flat accommodation.
         flat.addFacility(NewFacility.createFacility("LivingRoom"));
         flat.addFacility(NewFacility.createFacility("Bedroom"));
 
-        // Add facilities to the Cabin accommodation
+        // This adds facilities to the Cabin accommodation.
         cabin.addFacility(NewFacility.createFacility("LivingRoom"));
         cabin.addFacility(NewFacility.createFacility("Bedroom"));
 
-        // Add facilities to the Luxury Villa accommodation
+        // This adds facilities to the Luxury Villa accommodation.
         luxuryVilla.addFacility(NewFacility.createFacility("LivingRoom"));
         luxuryVilla.addFacility(NewFacility.createFacility("Bedroom"));
 
@@ -73,14 +78,14 @@ public class MainViewController {
 
         // Add a listener to handle selection changes in the accommodationListView
         accommodationListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            // Check if a new item is selected
+            // Check if a new item is selected.
             if (newVal != null) {
                 StringBuilder fullInfo = new StringBuilder();
 
-                // 1. Add General Info about the accommodation
+                // Add General Info about the accommodation.
                 fullInfo.append(newVal.showAccommodationInfoText()).append("\n\n");
 
-                // 3. Add the facilities information
+                // Adds the facility information.
                 fullInfo.append("--- Included Facilities ---\n");
 
                 // Use Java Streams to process the facilities list
@@ -100,9 +105,8 @@ public class MainViewController {
             }
         });
 
-        // Display info when an accommodation is selected.
-        // Note: This second listener might overwrite the detailed info set by the previous listener.
-        // Consider removing this block if the detailed view above is preferred.
+        // Display info when accommodation is selected.
+
         accommodationListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 // Set text area to show basic accommodation info and specific info
@@ -112,7 +116,7 @@ public class MainViewController {
     }
 
     /**
-     * Handles the "Book" button click event.
+     * Handles the "Book" button click event. +
      * Validates user input and processes the booking.
      */
     @FXML
@@ -121,16 +125,16 @@ public class MainViewController {
         User selectedUser = userListView.getSelectionModel().getSelectedItem();
         Accommodation selectedAcc = accommodationListView.getSelectionModel().getSelectedItem();
 
-        // Validate that both a user and an accommodation have been selected
+        // The IF statement validates that both a user and an accommodation have been selected.
         if (selectedUser == null || selectedAcc == null) {
             detailsTextArea.setText("Error: Please select both a user and an accommodation.");
             return; // Exit the method if validation fails
         }
 
-        // Check if the selected accommodation is already booked
+        // Here it checks if the selected accommodation is already booked.
         if (selectedAcc.getIsBooked()) {
             detailsTextArea.setText("Error: Accommodation ID " + selectedAcc.getAccommodationID() + " is already booked.");
-            return; // Exit the method if accommodation is not available
+            return; // Here is exits the method if accommodation is not available.
         }
 
         try {
@@ -138,21 +142,26 @@ public class MainViewController {
             int nights = Integer.parseInt(nightsField.getText());
             int guests = Integer.parseInt(guestsField.getText());
             
-            // Calculate the total price based on the number of nights
-            double total = selectedAcc.calculateTotalPrice(nights);
+            // Here it calculates the total price based on the number of nights.
+            double total = selectedAcc.calculateTotalPrice(nights, guests);
+            selectedAcc.bookAccommodation();
             
-            // Perform the booking operation on the accommodation
+            // This line performs the booking operation on the accommodation.
             selectedAcc.bookAccommodation();
 
-            // Display a success message with the user's name and total price
+            LocalDate checkInDate = checkInPicker.getValue();
+            LocalDate checkOutDate = (checkInDate != null) ? checkInDate.plusDays(nights) : null;
+
+            // This line of code displays a success message with the user's name and total price.
             detailsTextArea.setText("Booking Successful!\n" +
                     "User: " + selectedUser.getname() + "\n" +
-                    "Guests: " + guests + "\n" + // NEW
+                    "Dates: " + (checkInDate != null ? checkInDate : "Not selected") + " to " + (checkOutDate != null ? checkOutDate : "N/A") + "\n" +
+                    "Guests: " + guests + "\n" +
                     "Nights: " + nights + "\n" +
                     "Total Price: £" + total);
 
         } catch (NumberFormatException e) {
-            // Handle the case where the nights input is not a valid integer
+            // This handles the case where the nights input is not a valid integer.
             detailsTextArea.setText("Error: Please enter a valid number for nights and guests.");
         }
     }
