@@ -154,7 +154,7 @@ public class MainViewController {
 
             // This line of code displays a success message with the user's name and total price.
             detailsTextArea.setText("Booking Successful!\n" +
-                    "User: " + selectedUser.getname() + "\n" +
+                    "User: " + selectedUser.getName() + "\n" +
                     "Dates: " + (checkInDate != null ? checkInDate : "Not selected") + " to " + (checkOutDate != null ? checkOutDate : "N/A") + "\n" +
                     "Guests: " + guests + "\n" +
                     "Nights: " + nights + "\n" +

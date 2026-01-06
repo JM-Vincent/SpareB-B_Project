@@ -28,23 +28,23 @@ public class Cabin extends Accommodation {
                 "\n" + "View type: " + viewType;
     }
 
-    public String getsettingType() {
+    public String getSettingType() {
         return settingType;
     }
 
-    public boolean getisSecluded() {
+    public boolean getIsSecluded() {
         return isSecluded;
     }
 
-    public double getlotSize() {
+    public double getLotSize() {
         return lotSize;
     }
 
-    public String getproximityToTrail() {
+    public String getProximityToTrail() {
         return proximityToTrail;
     }
 
-    public String getviewType() {
+    public String getViewType() {
         return viewType;
     }
 

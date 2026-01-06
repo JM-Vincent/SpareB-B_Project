@@ -31,21 +31,21 @@ public class User {
         return userID;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public String getpassword() {
+    public String getPassword() {
         return password;
     }
 
     @Override
     public String toString() {
-        return this.name; // This tells the GUI to display the user's name
+        return this.name; // This tells the GUI to display the user's name.
     }
 
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Import necessary JavaFX classes -->
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<!-- Imports JavaFX classes. -->
+<?import javafx.geometry.Insets?> <!-- Insets class used to define padding space for each element. -->
+<?import javafx.scene.control.*?> <!-- Allows to use UI controls, aka a button. -->
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
@@ -10,19 +10,19 @@
 
 <!-- Root VBox container for the main view -->
 <VBox spacing="15.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.roehampton.sd3.sparebnb.MainViewController">
-    <!-- Padding around the edges of the VBox -->
+    <!-- Padding around the edges of the VBox. -->
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <!-- Main Title Label -->
+    <!-- Main Title Label. -->
     <Label text="SpareBnB Management System">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
 
-    <!-- HBox to hold the User and Accommodation lists side-by-side -->
+    <!-- HBox to hold the User and Accommodation lists side-by-sid.e -->
     <HBox spacing="20.0" VBox.vgrow="ALWAYS">
         <!-- VBox for User selection -->
         <VBox spacing="5.0" HBox.hgrow="ALWAYS">
@@ -30,20 +30,20 @@
             <ListView fx:id="userListView" VBox.vgrow="ALWAYS" />
         </VBox>
 
-        <!-- VBox for Accommodation selection -->
+        <!-- VBox for Accommodation selection. -->
         <VBox spacing="5.0" HBox.hgrow="ALWAYS">
             <Label text="2. Select Accommodation" />
             <ListView fx:id="accommodationListView" VBox.vgrow="ALWAYS" />
         </VBox>
     </HBox>
 
-    <!-- VBox for displaying details of the selected accommodation -->
+    <!-- VBox is used for displaying details of the selected accommodation. -->
     <VBox spacing="5.0">
         <Label text="Accommodation Details &amp; Facilities" />
         <TextArea fx:id="detailsTextArea" editable="false" prefHeight="150.0" wrapText="true" />
     </VBox>
 
-    <!-- HBox for booking controls (nights input and confirm button) -->
+    <!-- HBox used for booking controls (nights input and confirm button). -->
     <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #f4f4f4; -fx-padding: 10; -fx-border-color: #ddd;">
 
         <Label text="Check-in Date:"/>
@@ -55,10 +55,10 @@
         <Label text="Number of Guests:" />
         <TextField fx:id="guestsField" prefWidth="60.0" text="1" />
 
-        <!-- Spacer to push the button to the right -->
+        <!-- Spacer to push the button to the right. Button placement. -->
         <Region HBox.hgrow="ALWAYS" />
 
-        <!-- Confirm Booking Button -->
+        <!-- Booking Button confirmation. -->
         <Button mnemonicParsing="false" onAction="#onBookButtonClick" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" text="Confirm Booking" />
     </HBox>
 </VBox>
